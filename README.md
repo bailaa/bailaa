@@ -1,8 +1,8 @@
-## Hi there 👋 I`m using GitHub
+## Hi there 👋 I'm using GitHub
+
+Working on pet- and production projects so not only using GitHub...
 
 ![Top Langs](./profile/top-langs.svg)
-
-I`m working on pet- and prodaction projects so not only using GitHub...
 
 also...
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
