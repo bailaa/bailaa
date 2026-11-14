@@ -1,6 +1,6 @@
 ## Hi there 👋 I`m using GitHub
 
-![bailaa's github stats](./profile/stats.svg)
+![Profile Views](https://profile-counter.glitch.me/bailaa/count.svg)
 
 ![Top Langs](./profile/top-langs.svg)
 
