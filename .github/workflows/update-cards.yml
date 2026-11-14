@@ -9,44 +9,33 @@ jobs:
   update-cards:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-
+      contents: write # Объявляем права на запись, хотя основная часть работы выполняется через PAT
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      # Ключевой момент: при checkout передаем PAT, чтобы последующий push имел права
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
 
-      # ===== Карточка 1: Stats (без stargazers, чтобы не было ошибки 403) =====
       - name: Generate stats card
-        uses: lowlighter/metrics@latest
+        uses: readme-tools/github-readme-stats-action@v1
         with:
-          token: ${{ secrets.PAT_TOKEN }}
-          user: bailaa
-          filename: profile/stats.svg
-          template: classic
-          base: header, activity, community, metadata
-          config_timezone: Europe/Moscow
-          committer_message: "metrics: refresh stats card"
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=radical
+          path: profile/stats.svg
+          token: ${{ secrets.PAT_TOKEN }} # Здесь можно продолжать использовать GITHUB_TOKEN, действие только читает данные
 
-      # ===== Карточка 2: Top Languages (отдельный файл) =====
       - name: Generate top languages card
-        uses: lowlighter/metrics@latest
+        uses: readme-tools/github-readme-stats-action@v1
         with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=compact&theme=radical
+          path: profile/top-langs.svg
           token: ${{ secrets.PAT_TOKEN }}
-          user: bailaa
-          filename: profile/top-langs.svg
-          template: classic
-          base: ""
-          plugin_languages: yes
-          plugin_languages_sections: most-used
-          plugin_languages_limit: 8
-          plugin_languages_categories: markup, programming
-          committer_message: "metrics: refresh top-langs card"
 
-      # ===== Коммит обеих карточек =====
-      - name: Commit generated cards
+      - name: Commit cards
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
-          git add profile/stats.svg profile/top-langs.svg
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
           git commit -m "Update README cards" || exit 0
           git push
