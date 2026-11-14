@@ -1,7 +1,5 @@
 ## Hi there 👋 I`m using GitHub
 
-![Profile Views](https://profile-counter.glitch.me/bailaa/count.svg)
-
 ![Top Langs](./profile/top-langs.svg)
 
 I`m working on pet- and prodaction projects so not only using GitHub...
