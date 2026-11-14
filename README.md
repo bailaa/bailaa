@@ -1,6 +1,8 @@
 ## Hi there 👋 I`m using GitHub
 
-![bailaa's github stats](https://github-readme-stats.vercel.app/api?username=bailaa&show_icons=true&theme=radical) ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=bailaa&layout=compact)
+![bailaa's github stats](./profile/stats.svg)
+
+![Top Langs](./profile/top-langs.svg)
 
 I`m working on pet- and prodaction projects so not only using GitHub...
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
